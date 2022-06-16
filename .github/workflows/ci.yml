@@ -9,9 +9,6 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
         os: [ubuntu-18.04, ubuntu-20.04]
 
-    # What runner (OS) are we testing on.
-    runs-on: ubuntu-20.04
-
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -27,9 +24,9 @@ jobs:
 
       # Install Python.
       - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
       # Setup Python environment.
       - name: Install pip and pytest
