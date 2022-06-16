@@ -5,9 +5,23 @@ jobs:
 
     # List OS runners and Python versions we want to test on.
     strategy:
+      # Don't quite all jobs if only one job fails.
+      fail-fast: false
+      
       matrix:
+        # Make sure our code works on these.
         python-version: [3.7, 3.8, 3.9]
         os: [ubuntu-18.04, ubuntu-20.04]
+        experimental: [false, false, false]
+  
+        # Test on this, but don't mind if it fails.
+        include:
+          - os: Ubuntu 22.04
+            python-version: 3.10
+            experimental: true
+        
+    # If True, do not fail, just warn.
+    continue-on-error: ${{ matrix.experimental }}
   
     runs-on: ${{ matrix.os}}
 
