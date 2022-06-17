@@ -5,13 +5,13 @@ jobs:
 
     # List OS runners and Python versions we want to test on.
     strategy:
-      # Don't quite all jobs if only one job fails.
+      # Don't quit all jobs if only one job fails.
       fail-fast: false
       
       matrix:
         # Make sure our code works on these.
         python-version: [3.7, 3.8, 3.9]
-        os: [ubuntu-18.04, ubuntu-20.04, macos-12]
+        os: [ubuntu-18.04, ubuntu-20.04]
         experimental: [false]
   
         # Test on this, but don't mind if it fails.
@@ -20,11 +20,13 @@ jobs:
             python-version: 3.10
             experimental: true
         
-    # If True, do not fail, just warn.
+    # If True, do not fail the job, just warn me.
     continue-on-error: ${{ matrix.experimental }}
   
+    # What operating system is this job running on?
     runs-on: ${{ matrix.os}}
 
+    # Our CI steps for this job.
     steps:
       - run: echo "Running on ${{ matrix.os }} with Python ${{ matrix.python-version }} (experimental = ${{ matrix.experimental }}"
       
@@ -39,6 +41,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      # Checkout python-desc conda environment.
+      - name: Checkout python-desc
+        uses: actions/checkout@v3
+        with:
+          repository: LSSTDESC/desc-python
+          path: './desc-python'
 
       # Install Python.
       - name: Set up Python ${{ matrix.python-version }}
