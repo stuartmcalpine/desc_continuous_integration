@@ -10,7 +10,7 @@ jobs:
       
       matrix:
         # Make sure our code works on these.
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.9]
         os: [ubuntu-18.04, ubuntu-20.04]
         experimental: [false]
   
@@ -49,17 +49,28 @@ jobs:
           repository: LSSTDESC/desc-python
           path: './desc-python'
 
-      # Install Python.
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      # Install MiniConda and activate the python-desc environment.
+      - uses: conda-incubator/setup-miniconda@v2
         with:
+          activate-environment: python-desc-env
+          environment-file: desc-python/conda/desc-python-env.yml
           python-version: ${{ matrix.python-version }}
+          auto-activate-base: false
+      - run: |
+          conda info
+          conda list
+
+      # Install Python.
+      #- name: Set up Python ${{ matrix.python-version }}
+      #  uses: actions/setup-python@v2
+      #  with:
+      #    python-version: ${{ matrix.python-version }}
 
       # Setup Python environment.
-      - name: Install pip and pytest
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install pytest
+      #- name: Install pip and pytest
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    python -m pip install pytest
 
       # Perform unit tests.
       - name: Test with pytest
