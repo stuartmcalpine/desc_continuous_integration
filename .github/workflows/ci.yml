@@ -1,5 +1,11 @@
 name: GitHub Actions Demo
 on: [workflow_dispatch]
+
+# Use the bash login (needed for envs in miniconda)
+defaults:
+  run:
+    shell: bash -l {0}
+    
 jobs:
   Explore-GitHub-Actions:
 
