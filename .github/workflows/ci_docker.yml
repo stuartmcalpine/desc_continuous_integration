@@ -40,6 +40,5 @@ jobs:
       - name: test docker
         run: |
           whoami
-          ls
-          ls ./
-          ls /opt/desc/py/envs/desc/
+          ls /__w/
+          ls /__w/desc_continuous_integration/
