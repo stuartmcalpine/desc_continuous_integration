@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: DESC_CI_example_docker
 on: [workflow_dispatch]
 
 # Use the bash login (needed for envs in miniconda)
