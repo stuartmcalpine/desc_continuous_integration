@@ -55,3 +55,7 @@ jobs:
       #- name: Test with pytest
       #  run:
       #    pytest test_arithmetic.py
+      - name: test docker
+        run: |
+          docker ps
+          docker images
