@@ -49,8 +49,8 @@ jobs:
         run: |
           ls .
           pwd
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: conda list
+      #- run: echo "🍏 This job's status is ${{ job.status }}."
+      #- run: conda list
       
       # Perform unit tests.
       #- name: Test with pytest
