@@ -21,7 +21,7 @@ jobs:
             python-version: 3.10
             experimental: true
         
-    container: lsstdesc/desc-python:latest
+    container: conda/miniconda3
     
     # If True, do not fail the job, just warn me.
     continue-on-error: ${{ matrix.experimental }}
@@ -36,5 +36,5 @@ jobs:
         run: |
           whoami
           ls /__w/
-          ls /__w/desc_continuous_integration/
+          ls .
           which conda
