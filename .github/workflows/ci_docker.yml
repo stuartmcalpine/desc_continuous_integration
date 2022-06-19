@@ -21,7 +21,7 @@ jobs:
             python-version: 3.10
             experimental: true
         
-    container: conda/miniconda3
+    container: lsstdesc/desc-python
     
     # If True, do not fail the job, just warn me.
     continue-on-error: ${{ matrix.experimental }}
@@ -34,10 +34,9 @@ jobs:
 
       - name: test docker
         run: |
+          chmod 777 /__w/
           whoami
           ls /__w/
-          ls .
-          which conda
           
       - name: Check out repository code
         uses: actions/checkout@v3
