@@ -42,3 +42,4 @@ jobs:
           whoami
           ls /__w/
           ls /__w/desc_continuous_integration/
+          which conda
