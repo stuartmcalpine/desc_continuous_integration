@@ -23,7 +23,17 @@ jobs:
       matrix:
         python-version: [3.7, 3.8, 3.9]
         os: [ubuntu-18.04, ubuntu-20.04, macos-latest]
-  
+        experimental: [false]
+
+        # Test on this, but don't mind if it fails.
+        include:
+          - os: ubuntu-22.04
+            python-version: 3.10
+            experimental: true
+
+    # If True, do not fail the job, just warn me.
+    continue-on-error: ${{ matrix.experimental }}
+
     # What operating system is this job running on?
     runs-on: ${{ matrix.os}}
 
