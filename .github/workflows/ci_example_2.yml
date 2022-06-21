@@ -61,4 +61,10 @@ jobs:
       # Perform unit tests.
       - name: Test with pytest
         run:
-          pytest test_arithmetic.py
+          pytest test_arithmetic.py --cov
+          
+      # Report code coverage.
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
