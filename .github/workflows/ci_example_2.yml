@@ -28,7 +28,7 @@ jobs:
         # Test on this, but don't mind if it fails.
         include:
           - os: ubuntu-22.04
-            python-version: 3.10
+            python-version: 3.9
             experimental: true
 
     # If True, do not fail the job, just warn me.
