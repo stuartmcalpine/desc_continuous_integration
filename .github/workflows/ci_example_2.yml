@@ -56,15 +56,15 @@ jobs:
       - name: Install pip and pytest
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov
+          python -m pip install pytest pytest-cov coveralls
 
       # Perform unit tests.
       - name: Test with pytest
         run:
           pytest test_arithmetic.py --cov
           
-      # Report code coverage.
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: coveralls
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          coveralls --service=github
