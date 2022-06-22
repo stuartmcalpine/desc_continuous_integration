@@ -56,15 +56,15 @@ jobs:
       - name: Install pip and pytest
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov coveralls
+          python -m pip install pytest pytest-cov
 
       # Perform unit tests.
       - name: Test with pytest
         run:
-          pytest test_arithmetic.py --cov
+          pytest test_arithmetic.py --cov --cov-report=xml
           
-      - name: coveralls
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          coveralls --service=github-actions
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: true 
