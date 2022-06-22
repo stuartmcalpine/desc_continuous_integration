@@ -61,10 +61,10 @@ jobs:
       # Perform unit tests.
       - name: Test with pytest
         run:
-          pytest test_arithmetic.py --cov --cov-report=xml
+          pytest test_arithmetic.py --cov --cov-report xml:/home/runner/coverage.xml
           
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          files: ./coverage.xml
+          files: /home/runner/coverage.xml
           fail_ci_if_error: true 
