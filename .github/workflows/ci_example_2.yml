@@ -53,19 +53,20 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       # Install dependencies.
-      - name: Install pip and pytest
+      - name: Install pip, pytest, pytest-cov and flake8.
         run: |
           python -m pip install --upgrade pip
           python -m pip install pytest pytest-cov flake8
           
-      # Do some basic code linting using flake8.
-      - name: flake8 linting
-        run: flake8 --count --select=E9 --show-source --statistics ./my_simple_functions/
+      # Do some basic code linting using flake8. Check for syntax and indentation errors.
+      - name: flake8 linting.
+        run: flake8 --count --select=E1,E9 --show-source --statistics ./my_simple_functions/
 
-      # Perform unit tests.
+      # Perform the unit tests and output a report.
       - name: Test with pytest
         run:
           pytest test_arithmetic.py --cov --cov-report xml
           
+      # Upload the code coverage reults to codecov.io.
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
