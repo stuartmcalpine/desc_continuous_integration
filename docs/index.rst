@@ -12,13 +12,10 @@ Hello I am an introduction.
    :maxdepth: 2
    :caption: Contents:
 
-   gh_actions
-
-
-Code example
-============
-
-.. literalinclude:: ../.github/workflows/ci.yml
+   ./desc/ci
+   ./desc/gh_actions
+   ./desc/desc_checklist
+   
 
 Indices and tables
 ==================
