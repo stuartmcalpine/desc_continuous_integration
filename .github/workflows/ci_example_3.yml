@@ -13,6 +13,10 @@ on:
 # List of jobs for this workflow.
 jobs:
   ci-with-pytest:
+    # Required to activate miniconda environment.
+    defaults:
+      run:
+        shell: bash -l {0}
 
     # Our strategy lists the OS and Python versions we want to test on.
     strategy:
