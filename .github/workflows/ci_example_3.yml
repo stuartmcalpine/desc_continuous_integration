@@ -66,6 +66,7 @@ jobs:
       - name: flake8 linting.
         run: |
           conda install flake8
+          conda list
           flake8 --count --select=E1,E9 --show-source --statistics ./my_simple_functions/
 
       # Perform the unit tests and output a report.
