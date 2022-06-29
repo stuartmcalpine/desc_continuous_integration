@@ -66,20 +66,14 @@ jobs:
           auto-activate-base: false
           mamba-version: "*"
           
-      - run: |
-          conda list
-          conda env list
-          
       # Do some basic code linting using flake8. Check for syntax and indentation errors.
       - name: flake8 linting.
-        run: |
-          conda install flake8
-          conda list
-          flake8 --count --select=E1,E9 --show-source --statistics ./my_simple_functions/
+        run: flake8 --count --select=E1,E9 --show-source --statistics ./my_simple_functions/
 
       # Perform the unit tests and output a report.
       - name: Test with pytest
-        run:
+        run: |
+          conda install pytest-cov
           pytest test_arithmetic.py --cov --cov-report xml
           
       # Upload the code coverage reults to codecov.io.
