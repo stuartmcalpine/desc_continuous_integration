@@ -61,7 +61,7 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: desc # Has to be what's in env file.
-          environment-file: desc-python/conda/desc-python-env.yml
+          environment-file: desc-python/conda/condalist.txt
           python-version: ${{ matrix.python-version }}
           auto-activate-base: false
           mamba-version: "*"
