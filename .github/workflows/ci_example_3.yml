@@ -65,6 +65,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           auto-activate-base: false
           mamba-version: "*"
+          channels: conda-forge
           
       # Do some basic code linting using flake8. Check for syntax and indentation errors.
       - name: flake8 linting.
