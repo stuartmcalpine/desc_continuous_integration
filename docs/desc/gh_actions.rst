@@ -3,13 +3,30 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-GitHub Actions
-==============
+DESC CI with GitHub Actions
+===========================
 
-Hello I am an introduction.
+For DESC repositories we strongly encourage the use of GitHub's automated CI/CD
+workflow tool, `GitHub Actions <https://github.com/features/actions>`__. With
+GitHub Actions you can automate, customize, and execute your software
+development workflows right in your repository. In addition, you have access to
+thousands of community created pre-built "Actions" to make the process of CI as
+simple and efficient as possible.
 
-The example GitHub Actions workflow YAML files discussed below are located in
-the usual ``.github/workflows/`` directory of the repository.
+CI with GitHub Actions is configured via a "workflow", a YAML file checked in
+to your repository which will run when triggered by an event in your
+repository, triggered manually, or at a defined schedule. Workflows are defined
+in the ``.github/workflows`` directory of your repository. A repository can
+have multiple workflows, each of which can perform a different set of tasks.'
+
+This repository has four example workflows, of increasing complexity, which we
+overview in this section. The goal of each example workflow is always the same,
+however, to ensure our code remains stable through any changes to the codebase
+using a test suite.  
+
+This is not designed to be a definitive tutorial on GitHub Actions, for that
+see `here <https://docs.github.com/en/actions/quickstart>`__,  but to be a
+starting point for getting you started with CI for your DESC repository.
 
 A simple CI example
 -------------------
@@ -36,10 +53,10 @@ track within the GitHub Actions API.
 Then, how and when we want our workflow to be triggered is listed under the
 ``on:`` parameter.  For this example, our workflow will be triggered whenever
 there is a push or pull request onto the ``main`` branch. Having a CI workflow
-on at least the main branch of our repositories is an excellent practice to
-ensure that any proposed changes to the codebase of the primary branch cannot
-proceed until they go through the required battery of unit tests, increasing
-our codes stability.
+connected to at least the main branch of our repositories is an excellent
+practice to ensure that any proposed changes to the codebase of the primary
+branch cannot proceed until they go through the required battery of unit tests,
+increasing our codes stability.
 
 There are naturally many, many more options that can be selected for ``on:``.
 We can trigger a CI workflow for pull requests, push requests, forks etc, to
@@ -134,7 +151,8 @@ Our example job has five steps:
    release version of the action we want to use.
 3. Use the ``actions/setup-python@v2`` action to install the desired version of
    Python on the host machine. Note some actions accept arguments (``with:``),
-   this action accepts the Python version you wish to install, for example.
+   this action accepts the Python version you wish to install, for example,
+   which we take from our strategy matrix.
 4. Install the Python packages we need to run our tests using ``pip``.
 5. Finally, run our test suite using ``pytest``.
 
@@ -308,7 +326,7 @@ Python and it's dependencies ourselves as we have done up until now.
    :lines: 53-58
 
 First we checkout the ``desc-python`` repository. Note we do this using the
-same GitHub Action as we have been using to check out our own repository (which
+same GitHub Action as we have been using to checkout our own repository (which
 is the default behaviour), but now we are telling the Action to checkout a
 specified GitHub repository (``repository:``) into a specified directory on the
 host machine (``path:``).
@@ -343,6 +361,12 @@ is required to allow MiniConda to activate a custom environment.
    operate you can request its inclusion by raising an issue at the
    ``desc-python`` repository. 
 
+Example 3 full code
+^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../../.github/workflows/ci_example_3.yml
+   :language: yaml
+   :linenos:
 
 Using the DESC docker image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

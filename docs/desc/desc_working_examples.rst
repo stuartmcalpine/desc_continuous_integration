@@ -3,14 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Working CI examples from DESC repositories 
-==========================================
+Example CI workflows from DESC repositories 
+===========================================
 
 Here we show a brief selection of CI workflows taken from some activate DESC
 repositories, break them down, and discuss their workings. These demonstrate CI
-at DESC in action, whilst also demonstrating additional capabilities of GitHub
-Actions beyond our basic examples in the previous section, and what extra steps
-we may need to perform to get our CI working.  
+at DESC in action, whilst also demonstrating some additional capabilities of
+GitHub Actions beyond the basic examples in the previous section, and what
+extra steps we may need to perform to get our CI working.  
 
 The DESC CI workflows were taken from the repositories on July 2022.
 
@@ -48,7 +48,7 @@ CCL (`The Core Cosmology Library <https://github.com/LSSTDESC/CCL>`__)
     #. Upload code coverage results output by ``pytest``.
 
 This example has quite a bit more setup to get the host machine ready for the
-unit tests compared to our simple examples in the previous section,
+unit tests compared to the simple examples in the previous section,
 particularly to accommodate for testing on the MacOS operating system. Below is
 a few more details about the GitHub Actions syntax not covered by the examples
 in the previous section.

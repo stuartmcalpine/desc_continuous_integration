@@ -74,7 +74,7 @@ jobs:
       - name: Test with pytest
         run: |
           conda install pytest-cov
-          pytest test_arithmetic.py --cov --cov-report xml
+          pytest --cov --cov-report xml
           
       # Upload the code coverage reults to codecov.io.
       - name: Upload coverage to Codecov
