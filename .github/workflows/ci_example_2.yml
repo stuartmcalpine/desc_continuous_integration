@@ -60,7 +60,7 @@ jobs:
           
       # Do some basic code linting using flake8. Check for syntax and indentation errors.
       - name: flake8 linting.
-        run: flake8 --count --select=E1,E9 --show-source --statistics ./my_arithmetic.py
+        run: flake8 --count --select=E1,E9 --show-source --statistics ./python/my_arithmetic.py
 
       # Perform the unit tests and output a report.
       - name: Test with pytest
