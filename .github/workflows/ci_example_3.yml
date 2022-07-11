@@ -60,7 +60,7 @@ jobs:
       # Install DESC Python environment.
       - name: Install DESC Python
         run: |
-          cd desc-python
+          cd desc-python/conda
           bash install-desc-python.sh .
 
       # Install MiniConda and activate the python-desc environment.
