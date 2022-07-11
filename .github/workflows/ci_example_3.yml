@@ -25,8 +25,8 @@ jobs:
       fail-fast: false
       
       matrix:
-        python-version: [3.7, 3.8, 3.9]
-        os: [ubuntu-18.04, ubuntu-20.04, macos-latest]
+        python-version: [3.9]
+        os: [ubuntu-20.04]
         experimental: [false]
 
         # Test on this, but don't mind if it fails.
@@ -60,14 +60,14 @@ jobs:
       # Install MiniConda and activate the python-desc environment.
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          environment-file: desc-python/conda/condalist.txt
           python-version: ${{ matrix.python-version }}
           auto-activate-base: true
           mamba-version: "*"
-          channels: conda-forge
           
       # Install extra pip packages.
-      - run: pip install --no-cache-dir -r ./desc-python/conda/piplist.txt
+      - run: |
+          mamba install -c conda-forge -y --file ./condalist.txt
+          pip install --no-cache-dir -r ./desc-python/conda/piplist.txt
           
       # Do some basic code linting using flake8. Check for syntax and indentation errors.
       - name: flake8 linting.
