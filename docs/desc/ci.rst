@@ -23,15 +23,15 @@ Continuous Integration
     updates locally before pushing code to a repository, or you can use a CI
     server that checks for new code commits in a repository.*"
 
-    -- `GitHub
+    -- `Taken from the GitHub website
     <https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration>`__
 
 Essentially, CI is a philosophy to keep a repositories' code live and
-up-to-date, by encouraging each developer to push their code changes as
+up-to-date, by encouraging the developers to push their code changes as
 frequently as possible, whilst ensuring the codebase remains stable and bug
 free through the use of a test suite and a CI workflow. 
 
-CI is a keenly encouraged guideline when developing DESC software. Continuous
+CI is a keenly encouraged practice when developing DESC software. Continuous
 testing is a key means of maintaining software quality. Running tests regularly
 can significantly reduce development time, as they can catch bugs as soon as
 they are introduced. In addition, comprehensive tests allow for aggressive
@@ -62,7 +62,7 @@ It is also worth looking at the `DM team's unit test policy
 
 * **User interface tests** check that the code behaves sensibly if the user does
   something they shouldn’t do (e.g., gives bad inputs, forgets a parameter,
-  etc.)
+  etc).
 
 * **Functional tests** check that the code produces correct outputs for a variety of inputs.
 
@@ -82,16 +82,20 @@ It is also worth looking at the `DM team's unit test policy
 pytest
 ^^^^^^
 
-``pytest`` is a popular package used to build test suites for Python software. 
+There are many fantastic Python packages that can help you build a test suite
+framework for your software. One popular example is ``pytest``. 
 
     "*The pytest framework makes it easy to write small, readable tests, and
     can scale to support complex functional testing for applications and
     libraries.*" -- `pytest website <https://docs.pytest.org/en/7.1.x/>`__
 
-For this example repository we have built a simple ``pytest`` framework to test
-the mathematical functions in the ``my_arithmetic.py`` file to ensure they work
-as expected. The unit tests are located in the ``test_*.py`` files which can be
-run by simplying entering ``pytest`` into the command line. 
+We utilize ``pytest`` to build a simple test framework for the code in this
+example repository, to ensure the mathematical functions in the
+``my_arithmetic.py`` file work as expected. The unit tests are located in the
+``test_*.py`` files which can be run by simply entering ``pytest`` into the
+command line. For those not familiar with ``pytest``, their `tutorial website
+<https://docs.pytest.org/en/7.1.x/getting-started.html>`__ is a great place to
+get started. 
 
-The goal of CI, then, is to automate these tests, which we will do using GitHub
-Actions.
+The goal of CI, then, is to automate these tests into a workflow, which we will
+do using GitHub Actions.
