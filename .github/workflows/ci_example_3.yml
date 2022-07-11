@@ -57,21 +57,17 @@ jobs:
           repository: LSSTDESC/desc-python
           path: './desc-python'
 
-      # Install DESC Python environment.
-      - name: Install DESC Python
-        run: |
-          cd desc-python/conda
-          bash install-desc-python.sh desc-env
-
       # Install MiniConda and activate the python-desc environment.
-      #- uses: conda-incubator/setup-miniconda@v2
-      #  with:
-      #    activate-environment: desc # Has to be what's in env file.
-      #    environment-file: desc-python/conda/condalist.txt
-      #    python-version: ${{ matrix.python-version }}
-      #    auto-activate-base: false
-      #    mamba-version: "*"
-      #    channels: conda-forge
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          environment-file: desc-python/conda/condalist.txt
+          python-version: ${{ matrix.python-version }}
+          auto-activate-base: true
+          mamba-version: "*"
+          channels: conda-forge
+          
+      # Install extra pip packages.
+      - run: pip install --no-cache-dir -r ./desc-python/conda/piplist.txt
           
       # Do some basic code linting using flake8. Check for syntax and indentation errors.
       - name: flake8 linting.
