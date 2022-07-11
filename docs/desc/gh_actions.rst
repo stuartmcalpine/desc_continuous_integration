@@ -302,7 +302,7 @@ packages when they come together within a pipeline.
 
 Setting up our CI workflows to operate within the ``desc-python`` Conda
 environment only requires a few steps, and can be done in two ways: (1)
-utilizing the ``desc-python-env.yml`` file within the `desc-python
+utilizing the YAML setup files within the `desc-python
 <https://github.com/LSSTDESC/desc-python>`__ repository to install the
 dependencies onto the GitHub Actions host runner, or (2) by operating within
 the DESC docker container. 
@@ -341,13 +341,12 @@ host machine (``path:``).
    :language: yaml
    :linenos:
    :lineno-start: 60
-   :lines: 60-67
+   :lines: 60-70
 
 Next we use another GitHub Action to install MiniConda onto the host machine.
-We tell it what version of Python we wish to setup, to install the
-``desc-python`` environment from the ``desc-python-env.yml`` file, and also to
-activate that environment right away. By specifying ``mamba-version: "*"`` we
-are telling MiniConda to use Mamba to resolve the environment, which is
+We tell it what version of Python we wish to setup and to activate the Conda
+``base`` environment. Then we install the ``desc-python`` environment from the
+YAML configuration files. We use Mamba to resolve the environment, which is
 generally much quicker for resolving complex environments. One extra step is on
 line 19, where we have specified the ``default:`` ``shell: bash -l {0}``, which
 is required to allow MiniConda to activate a custom environment.

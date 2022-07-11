@@ -65,7 +65,7 @@ jobs:
       # Perform the unit tests and output a report.
       - name: Test with pytest
         run:
-          pytest --cov --cov-report xml
+          pytest --cov --cov-report xml ./python
           
       # Upload the code coverage reults to codecov.io.
       - name: Upload coverage to Codecov

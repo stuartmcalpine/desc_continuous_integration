@@ -51,4 +51,4 @@ jobs:
       # Perform unit tests.
       - name: Test with pytest
         run:
-          pytest
+          pytest ./python

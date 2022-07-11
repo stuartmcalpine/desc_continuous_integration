@@ -6,7 +6,15 @@
 Welcome to DESC CI test's documentation!
 ========================================
 
-Hello I am an introduction.
+This repository contains a set of example Continuous Integration (CI) workflows
+to get you started when considering CI for DESC software.  
+
+The code in this repository is pure Python, yet the CI principles remain the
+same regardless of the language. We also use ``pytest`` to build our test
+framework, however again this is up to you what works best for your software. 
+
+Those already familiar with GitHub Actions and CI can skip to the *DESC CI
+Checklist* to see what we would recommend you use in your CI workflows.
 
 .. toctree::
    :maxdepth: 2
