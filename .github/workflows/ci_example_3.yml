@@ -61,7 +61,7 @@ jobs:
       - name: Install DESC Python
         run: |
           cd desc-python/conda
-          bash install-desc-python.sh .
+          bash install-desc-python.sh desc-env
 
       # Install MiniConda and activate the python-desc environment.
       #- uses: conda-incubator/setup-miniconda@v2
