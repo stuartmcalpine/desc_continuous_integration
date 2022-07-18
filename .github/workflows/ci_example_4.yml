@@ -53,11 +53,9 @@ jobs:
           path: './desc-python'
 
       - run: |
+          sorce /root/miniconda3/envs/test-env/etc/profile.d/conda.sh
           conda list
           ls
-          pwd
-          conda env list
-          conda info | grep -i 'base environment'
 
             ## Do some basic code linting using flake8. Check for syntax and indentation errors.
             #- name: flake8 linting.
