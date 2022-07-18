@@ -53,7 +53,7 @@ jobs:
           path: './desc-python'
 
       - run: |
-          sorce /root/miniconda3/envs/test-env/etc/profile.d/conda.sh
+          source /root/miniconda3/envs/test-env/etc/profile.d/conda.sh
           conda list
           ls
 
