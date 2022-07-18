@@ -53,8 +53,8 @@ jobs:
           path: './desc-python'
 
       - run: |
-        conda list
-        ls
+          conda list
+          ls
 
             ## Do some basic code linting using flake8. Check for syntax and indentation errors.
             #- name: flake8 linting.
