@@ -1,12 +1,7 @@
 name: DESC GitHub Actions example 2
 
 # How does the workflow get triggered?
-on:
-  push:
-  pull_request:
-    branches:
-      -main
-  workflow_dispatch: null
+on: [workflow_dispatch]
 
 # List of jobs for this workflow.
 jobs:
