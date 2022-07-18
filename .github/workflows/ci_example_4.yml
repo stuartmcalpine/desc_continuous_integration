@@ -55,6 +55,8 @@ jobs:
       - run: |
           conda list
           ls
+          pwd
+          conda env list
 
             ## Do some basic code linting using flake8. Check for syntax and indentation errors.
             #- name: flake8 linting.
